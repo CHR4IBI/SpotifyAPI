@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    display: flex;
+    justify-content: center;
+}
+
+.app a button {
+    padding: 20px;
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+}
