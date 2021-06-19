@@ -1,0 +1,12 @@
+.search-buttons .btn {
+    width: 115px;
+    border-radius: 15px;
+    height: 50px;
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+}
+.search-buttons .active {
+    background-color: white;
+    color: #FFA2A2;
+  }

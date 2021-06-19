@@ -1,6 +1,7 @@
 import React from "react";
 import "./LoginPage.css";
 import { Link } from "react-router-dom";
+import { Button } from'react-bootstrap'
 
 const LoginPage = () => {
   const {
@@ -15,9 +16,11 @@ const LoginPage = () => {
 
   return (
     <div className="home-page">
-      <h1>Spotify Music Search</h1>
+      <h1 className='main-heading'>Spotify Music App</h1>
       <Link to="/home">
-        <button onClick={() => handleLogin()}>Login to Spotify</button>
+      <Button variant="success" size="lg" onClick={() => handleLogin()}>
+      Login To Spotify
+    </Button>
       </Link>
     </div>
   );

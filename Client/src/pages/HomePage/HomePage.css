@@ -4,17 +4,22 @@
   height: 100vh;
   background: linear-gradient(89.89deg, #707070 0.1%, #ffffff 99.21%);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
 }
 
-.landing-page button,
-.landing-page button::after {
+.landing-page a {
+  text-decoration: none;
+}
+
+.search-btn,
+.search-btn::after {
   width: 300px;
   height: 70px;
   font-size: 36px;
   font-family: "Bebas Neue", cursive;
-  background: linear-gradient(45deg, transparent 5%, black 5%);
+  background: linear-gradient(45deg, transparent 5%, #FFA2A2 5%);
   border: 0;
   color: #fff;
   letter-spacing: 3px;
@@ -27,7 +32,45 @@
   justify-content: center;
 }
 
-.landing-page button::after {
+.create-btn,
+.create-btn::after {
+  width: 300px;
+  height: 70px;
+  font-size: 36px;
+  font-family: "Bebas Neue", cursive;
+  background: linear-gradient(45deg, transparent 5%, #8FDAFF 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  line-height: 88px;
+  box-shadow: 6px 0px 0px;
+  outline: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-btn,
+.play-btn::after {
+  width: 300px;
+  height: 70px;
+  font-size: 36px;
+  font-family: "Bebas Neue", cursive;
+  background: linear-gradient(45deg, transparent 5%, #D38FFF 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  line-height: 88px;
+  box-shadow: 6px 0px 0px;
+  outline: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn::after {
   --slice-0: inset(50% 50% 50% 50%);
   --slice-1: inset(80% -6px 0 0);
   --slice-2: inset(50% -6px 30% 0);
@@ -47,7 +90,59 @@
     transparent 3%,
     white 3%,
     white 5%,
-    black 5%
+    #FFA2A2 5%
+  );
+  text-shadow: -3px -3px 0px #f7ebbc, 3px 3px 0px white;
+  clip-path: var(--slice-0);
+}
+
+.create-btn::after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+
+  content: "AVAILABLE NOW";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 3%,
+    white 3%,
+    white 5%,
+    #8FDAFF 5%
+  );
+  text-shadow: -3px -3px 0px #f7ebbc, 3px 3px 0px white;
+  clip-path: var(--slice-0);
+}
+
+.play-btn::after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+
+  content: "AVAILABLE NOW";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 3%,
+    white 3%,
+    white 5%,
+    #D38FFF 5%
   );
   text-shadow: -3px -3px 0px #f7ebbc, 3px 3px 0px white;
   clip-path: var(--slice-0);
@@ -103,5 +198,9 @@
     clip-path: var(--slice-1);
     transform: translate(0);
   }
+}
+
+a {
+  text-decoration: none;
 }
 

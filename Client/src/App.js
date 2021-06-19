@@ -1,13 +1,14 @@
 import "./App.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, useLocation } from "react-router";
 import { AnimatedSwitch, spring } from "react-router-transition";
 import HomePage from "./pages/HomePage/HomePage";
-import ArtistsPage from "./pages/ArtistsPage/ArtistsPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import RedirectPage from "./pages/RedirectPage";
-import {get } from './utils/api'
+import CreatePage from "./pages/CreatePage/CreatePage";
+import PlayPage from "./pages/PlayPage/PlayPage";
 
 const glide = (val) => {
   return spring(val, {
@@ -30,6 +31,24 @@ const pageTransitions = {
 
 const App = () => {
   const location = useLocation();
+  const [expiryTime, setExpiryTime] = useState("0");
+
+  useEffect(() => {
+    let expiryTime;
+    try {
+      expiryTime = JSON.parse(localStorage.getItem("expiry_time"));
+    } catch (error) {
+      expiryTime = "0";
+    }
+    setExpiryTime(expiryTime);
+  }, []);
+
+  const isValidSession = () => {
+    const currentTime = new Date().getTime();
+    const isSessionValid = currentTime < expiryTime;
+
+    return isSessionValid;
+  };
   return (
     <React.Fragment>
       <AnimatedSwitch
@@ -40,9 +59,40 @@ const App = () => {
         })}
       >
         <Route path="/" exact component={LoginPage} />
-        <Route path='/redirect' component={RedirectPage} />
-        <Route path="/home" component={HomePage} />
-        <Route path="/artists" component={ArtistsPage} />
+        <Route
+          path="/redirect"
+          render={(props) => (
+            <RedirectPage
+              isValidSession={isValidSession}
+              setExpiryTime={setExpiryTime}
+              {...props}
+            />
+          )}
+        />
+        <Route
+          path="/home"
+          render={(props) => (
+            <HomePage isValidSession={isValidSession} {...props} />
+          )}
+        />
+        <Route
+          path="/search"
+          render={(props) => (
+            <SearchPage isValidSession={isValidSession} {...props} />
+          )}
+        />
+        <Route
+          path="/create"
+          render={(props) => (
+            <CreatePage isValidSession={isValidSession} {...props} />
+          )}
+        />
+        <Route
+          path="/play"
+          render={(props) => (
+            <PlayPage isValidSession={isValidSession} {...props} />
+          )}
+        />
         <Route component={NotFoundPage} />
       </AnimatedSwitch>
     </React.Fragment>
