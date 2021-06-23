@@ -7,7 +7,6 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import RedirectPage from "./pages/RedirectPage";
-import CreatePage from "./pages/CreatePage/CreatePage";
 import PlayPage from "./pages/PlayPage/PlayPage";
 
 const glide = (val) => {
@@ -79,12 +78,6 @@ const App = () => {
           path="/search"
           render={(props) => (
             <SearchPage isValidSession={isValidSession} {...props} />
-          )}
-        />
-        <Route
-          path="/create"
-          render={(props) => (
-            <CreatePage isValidSession={isValidSession} {...props} />
           )}
         />
         <Route

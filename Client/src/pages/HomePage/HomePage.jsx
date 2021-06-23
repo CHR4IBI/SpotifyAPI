@@ -9,9 +9,6 @@ const HomePage = () => {
       <Link to="/search">
         <button className='search-btn'>Search music</button>
       </Link>
-      <Link to="/create">
-        <button className='create-btn'>Create a playlist</button>
-      </Link>
       <Link to="/play">
         <button className='play-btn'>Listen to a song</button>
       </Link>

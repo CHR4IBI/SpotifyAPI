@@ -19,7 +19,7 @@ const AlbumsList = ({ albums }) => {
                     <Card.Title>{album.name}</Card.Title>
                     <Card.Text>
                       <small>
-                        {album.artists.map((artist) => artist.name).join(", ")}
+                      {album.artists[0].name}
                       </small>
                     </Card.Text>
                     <a

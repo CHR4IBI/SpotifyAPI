@@ -1,3 +1,8 @@
+.search-buttons {
+    display: flex;
+    flex-wrap: wrap
+}
+
 .search-buttons .btn {
     width: 115px;
     border-radius: 15px;

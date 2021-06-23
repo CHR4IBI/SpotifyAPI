@@ -1,16 +1,17 @@
 import React from "react";
 import _ from "lodash";
 import { Button } from "react-bootstrap";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import AlbumsList from "../AlbumsList/AlbumsList";
 import ArtistsList from "../ArtistsList/ArtistsList";
 import PlayList from "../PlayList/PlayList";
-import './SearchResult.css'
+import TracksList from "../TracksList/TracksList";
+import "./SearchResult.css";
 
 const SearchResult = (props) => {
   const { isValidSession, loadMore, result, setCategory, selectedCategory } =
     props;
-  const { albums, artists, playlist } = result;
+  const { albums, artists, playlist, tracks } = result;
 
   if (!isValidSession()) {
     return (
@@ -27,6 +28,16 @@ const SearchResult = (props) => {
   return (
     <React.Fragment>
       <div className="search-buttons">
+        {!_.isEmpty(tracks) && (
+          <button
+            className={`${
+              selectedCategory === "tracks" ? "btn active" : "btn"
+            }`}
+            onClick={() => setCategory("tracks")}
+          >
+            Tracks
+          </button>
+        )}
         {!_.isEmpty(albums.items) && (
           <button
             className={`${
@@ -58,6 +69,9 @@ const SearchResult = (props) => {
           </button>
         )}
       </div>
+      <div className={`${selectedCategory === "tracks" ? "" : "hide"}`}>
+        {tracks && <TracksList tracks={tracks} />}
+      </div>
       <div className={`${selectedCategory === "albums" ? "" : "hide"}`}>
         {albums && <AlbumsList albums={albums} />}
       </div>
@@ -70,9 +84,7 @@ const SearchResult = (props) => {
       {!_.isEmpty(result[selectedCategory]) &&
         !_.isEmpty(result[selectedCategory].next) && (
           <div className="load-more" onClick={() => loadMore(selectedCategory)}>
-            <Button variant="dark">
-              Load More
-            </Button>
+            <Button variant="dark">Load More</Button>
           </div>
         )}
     </React.Fragment>
