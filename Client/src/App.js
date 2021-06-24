@@ -83,7 +83,7 @@ const App = () => {
         <Route
           path="/play"
           render={(props) => (
-            <PlayPage isValidSession={isValidSession} {...props} />
+            <PlayPage isValidSession={isValidSession}{...props} /> 
           )}
         />
         <Route component={NotFoundPage} />

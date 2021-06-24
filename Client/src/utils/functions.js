@@ -1,4 +1,10 @@
 import axios from "axios";
+
+export const getAccessToken = () => {
+  const params = JSON.parse(localStorage.getItem("params"))
+  return params.access_token
+}
+
 export const getParamValues = (url) => {
   return url
     .slice(1)
@@ -21,3 +27,5 @@ export const setAuthHeader = () => {
     console.log("Error setting auth", error);
   }
 };
+
+
